@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  asynctmdb:
+    build: .
+    image: lycantropos/asynctmdb:latest
+    volumes:
+      - .:/asynctmdb/
+    environment:
+      - API.BaseURL=https://api.themoviedb.org
+      - API.Version=3
+      - API.Key=$API_KEY
+    entrypoint: python3
+    command: setup.py test
+    extra_hosts:
+      - "dockerhost:$DOCKERHOST"  # for debugging
