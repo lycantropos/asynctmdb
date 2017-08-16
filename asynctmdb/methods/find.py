@@ -1,4 +1,6 @@
 from functools import partial
+from typing import (Any,
+                    Dict)
 
 from aiohttp import ClientSession
 
@@ -16,7 +18,7 @@ async def by_id(external_id: str,
                 api_key: str,
                 language: str = 'en-US',
                 external_source: str,
-                session: ClientSession) -> dict:
+                session: ClientSession) -> Dict[str, Any]:
     method_url = urljoin(api_base_url, 'find', external_id)
     response = await requests.get(method_url=method_url,
                                   session=session,

@@ -1,3 +1,6 @@
+from typing import (Any,
+                    Dict)
+
 from aiohttp import ClientSession
 
 from asynctmdb.methods import find
@@ -8,7 +11,7 @@ async def movie(imdb_id: str,
                 api_base_url: str,
                 api_key: str,
                 language: str = 'en-US',
-                session: ClientSession) -> dict:
+                session: ClientSession) -> Dict[str, Any]:
     response = await find.by['imdb_id'](imdb_id,
                                         api_base_url=api_base_url,
                                         api_key=api_key,
