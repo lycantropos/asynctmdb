@@ -10,13 +10,13 @@ external_sources = {'imdb_id',
                     'tvdb_id', 'tvrage_id'}
 
 
-async def find_by_id(external_id: str,
-                     *,
-                     api_base_url: str,
-                     api_key: str,
-                     language: str = 'en-US',
-                     external_source: str,
-                     session: ClientSession) -> dict:
+async def by_id(external_id: str,
+                *,
+                api_base_url: str,
+                api_key: str,
+                language: str = 'en-US',
+                external_source: str,
+                session: ClientSession) -> dict:
     method_url = urljoin(api_base_url, 'find', external_id)
     response = await requests.get(method_url=method_url,
                                   session=session,
@@ -26,6 +26,6 @@ async def find_by_id(external_id: str,
     return response
 
 
-find_by = {external_source: partial(find_by_id,
-                                    external_source=external_source)
-           for external_source in external_sources}
+by = {external_source: partial(by_id,
+                               external_source=external_source)
+      for external_source in external_sources}
