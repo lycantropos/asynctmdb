@@ -13,6 +13,7 @@ async def test_movie_genres(api_base_url: str,
     movie_genres = await genres.movie(api_base_url=api_base_url,
                                       api_key=api_key,
                                       session=session)
+
     movie_genres_count = len(movie_genres)
     movie_genres_ids = list(map(operator.itemgetter('id'),
                                 movie_genres))
@@ -36,6 +37,7 @@ async def test_tv_genres(api_base_url: str,
     tv_genres = await genres.tv(api_base_url=api_base_url,
                                 api_key=api_key,
                                 session=session)
+
     tv_genres_count = len(tv_genres)
     tv_genres_ids = list(map(operator.itemgetter('id'),
                              tv_genres))
