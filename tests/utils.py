@@ -13,3 +13,11 @@ def example(strategy: SearchStrategy) -> Any:
                                   max_iterations=10_000,
                                   database=None,
                                   verbosity=Verbosity.quiet))
+
+
+def is_positive_integer(value: Any) -> bool:
+    return isinstance(value, int) and value > 0
+
+
+def is_non_empty_string(value: Any) -> bool:
+    return isinstance(value, str) and value
