@@ -11,6 +11,11 @@ def api_key() -> str:
 
 
 @pytest.fixture(scope='session')
+def invalid_api_key() -> str:
+    return ''
+
+
+@pytest.fixture(scope='session')
 def api_base_url() -> str:
     return urljoin(os.environ['API.BaseURL'],
                    os.environ['API.Version'])
