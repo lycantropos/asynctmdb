@@ -1,4 +1,5 @@
-from asyncio import AbstractEventLoop, ensure_future
+from asyncio import (AbstractEventLoop,
+                     ensure_future)
 
 import pytest
 from aiohttp import ClientSession
@@ -16,3 +17,8 @@ def request_token(api_base_url: str,
                                                 session=session))
     response = event_loop.run_until_complete(future)
     return response['request_token']
+
+
+@pytest.fixture(scope='session')
+def invalid_session_id() -> str:
+    return ''

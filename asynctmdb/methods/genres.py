@@ -15,7 +15,7 @@ async def movie(*,
                 api_key: str,
                 language: str = 'en-US',
                 session: ClientSession) -> GenresType:
-    method_url = urljoin(api_base_url, 'genre/movie/list')
+    method_url = urljoin(base_method_url(api_base_url), 'movie/list')
     response = await requests.get(method_url=method_url,
                                   session=session,
                                   api_key=api_key,
@@ -28,9 +28,13 @@ async def tv(*,
              api_key: str,
              language: str = 'en-US',
              session: ClientSession) -> GenresType:
-    method_url = urljoin(api_base_url, 'genre/tv/list')
+    method_url = urljoin(base_method_url(api_base_url), 'tv/list')
     response = await requests.get(method_url=method_url,
                                   session=session,
                                   api_key=api_key,
                                   language=language)
     return response['genres']
+
+
+def base_method_url(api_base_url: str) -> str:
+    return urljoin(api_base_url, 'genre')

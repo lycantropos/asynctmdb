@@ -5,9 +5,8 @@ from typing import (Union,
 from aiohttp import ClientSession
 
 from asynctmdb import requests
+from asynctmdb.common import DATE_TIME_FORMAT
 from asynctmdb.utils import urljoin
-
-DATE_TIME_FORMAT = '%Y-%m-%d %H:%M:%S %Z'
 
 
 async def create_request_token(*,
@@ -16,7 +15,7 @@ async def create_request_token(*,
                                session: ClientSession,
                                date_time_format: str = DATE_TIME_FORMAT
                                ) -> Dict[str, Union[int, str, datetime]]:
-    method_url = urljoin(api_base_url, 'authentication/token/new')
+    method_url = urljoin(base_method_url(api_base_url), 'token/new')
     response = await requests.get(method_url=method_url,
                                   session=session,
                                   api_key=api_key)
@@ -36,7 +35,7 @@ async def create_session(*,
                          request_token: str,
                          session: ClientSession
                          ) -> Dict[str, Union[int, str]]:
-    method_url = urljoin(api_base_url, 'authentication/session/new')
+    method_url = urljoin(base_method_url(api_base_url), 'session/new')
     response = await requests.get(method_url=method_url,
                                   session=session,
                                   api_key=api_key,
@@ -50,7 +49,7 @@ async def create_guest_session(*,
                                session: ClientSession,
                                date_time_format: str = DATE_TIME_FORMAT
                                ) -> Dict[str, Union[int, str, datetime]]:
-    method_url = urljoin(api_base_url, 'authentication/guest_session/new')
+    method_url = urljoin(base_method_url(api_base_url), 'guest_session/new')
     response = await requests.get(method_url=method_url,
                                   session=session,
                                   api_key=api_key)
@@ -62,3 +61,7 @@ async def create_guest_session(*,
     response['expires_at'] = datetime.strptime(expiration_date_time,
                                                date_time_format)
     return response
+
+
+def base_method_url(api_base_url: str) -> str:
+    return urljoin(api_base_url, 'authentication')
