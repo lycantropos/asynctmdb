@@ -17,7 +17,12 @@ async def movie(imdb_id: str,
                                         api_key=api_key,
                                         language=language,
                                         session=session)
-    records = response['movie_results']
+    try:
+        records = response['movie_results']
+    except KeyError as err:
+        err_msg = f'Invalid IMDb id: "{imdb_id}".'
+        raise ValueError(err_msg) from err
+
     try:
         record, = records
     except ValueError as err:
@@ -26,7 +31,7 @@ async def movie(imdb_id: str,
                        f'found {len(records)} records.')
         else:
             err_msg = ('No record found for movie with '
-                       f'imdb id "{imdb_id}".')
+                       f'IMDb id "{imdb_id}".')
         raise ValueError(err_msg) from err
     else:
         return record
