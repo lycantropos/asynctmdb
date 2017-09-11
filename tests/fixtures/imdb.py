@@ -15,7 +15,7 @@ def imdb_id(movie_details: Dict[str, Any]) -> str:
 
 @pytest.fixture(scope='session')
 def non_existent_imdb_id() -> str:
-    return imdb.title_id.int_to_str(0)
+    return imdb.title_id.from_int(0)
 
 
 @pytest.fixture(scope='function')
