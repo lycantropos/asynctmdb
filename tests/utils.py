@@ -1,6 +1,6 @@
 from typing import (Any,
                     Iterable,
-                    Dict)
+                    Dict, List)
 
 from hypothesis import (Verbosity,
                         find,
@@ -41,3 +41,9 @@ def is_valid_paginated_record(
     return (is_positive_integer(record['page']) and
             is_non_negative_integer(record['total_pages']) and
             is_non_negative_integer(record['total_results']))
+
+
+def are_valid_results(results: List[Dict[str, Any]]) -> bool:
+    return (isinstance(results, list) and
+            all(isinstance(result, dict)
+                for result in results))
