@@ -1,8 +1,11 @@
+from contextlib import suppress
+from datetime import datetime
 from typing import (Any,
                     Dict)
 
 from aiohttp import ClientSession
 
+from asynctmdb.common import DATE_FORMAT
 from asynctmdb.methods import find
 
 
@@ -34,4 +37,14 @@ async def movie(imdb_id: str,
                        f'IMDb id "{imdb_id}".')
         raise ValueError(err_msg) from err
     else:
+        normalize_movie(record)
         return record
+
+
+def normalize_movie(record: Dict[str, Any],
+                    *,
+                    format_string: str = DATE_FORMAT) -> None:
+    with suppress(TypeError):
+        record['release_date'] = (datetime.strptime(record['release_date'],
+                                                    format_string)
+                                  .date())
