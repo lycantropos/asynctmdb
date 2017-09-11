@@ -13,10 +13,12 @@ async def send(*,
                                 AsyncContextManager],
                method_url: str,
                session: ClientSession,
+               json_body: Dict[str, Any] = None,
                **params: Dict[str, str]
                ) -> Dict[str, Any]:
     async with method(session,
                       method_url,
+                      json=json_body,
                       params=params) as response:
         response_json = await response.json()
         return response_json
