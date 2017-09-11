@@ -4,7 +4,8 @@ from datetime import (datetime,
                       timedelta)
 from itertools import chain
 from typing import (Any,
-                    Dict, Iterable)
+                    Iterable,
+                    Dict)
 
 from aiohttp import ClientSession
 

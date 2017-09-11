@@ -4,7 +4,8 @@ from typing import Iterator
 
 from hypothesis import strategies
 
-from .utils import load_max_movie_id, TMDB_FOUNDATION_DATE
+from .utils import (TMDB_FOUNDATION_DATE,
+                    load_max_movie_id)
 
 MIN_MOVIE_ID = 2
 MAX_MOVIE_ID = load_max_movie_id()
