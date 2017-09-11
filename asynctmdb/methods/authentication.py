@@ -1,5 +1,6 @@
 from datetime import datetime
-from typing import (Union,
+from typing import (Any,
+                    Union,
                     Dict)
 
 from aiohttp import ClientSession
@@ -19,13 +20,8 @@ async def create_request_token(*,
     response = await requests.get(method_url=method_url,
                                   session=session,
                                   api_key=api_key)
-    try:
-        expiration_date_time = response['expires_at']
-    except KeyError:
-        return response
-
-    response['expires_at'] = datetime.strptime(expiration_date_time,
-                                               date_time_format)
+    normalize_response(response,
+                       date_time_format=date_time_format)
     return response
 
 
@@ -53,15 +49,22 @@ async def create_guest_session(*,
     response = await requests.get(method_url=method_url,
                                   session=session,
                                   api_key=api_key)
-    try:
-        expiration_date_time = response['expires_at']
-    except KeyError:
-        return response
-
-    response['expires_at'] = datetime.strptime(expiration_date_time,
-                                               date_time_format)
+    normalize_response(response,
+                       date_time_format=date_time_format)
     return response
 
 
 def base_method_url(api_base_url: str) -> str:
     return urljoin(api_base_url, 'authentication')
+
+
+def normalize_response(response: Dict[str, Any],
+                       *,
+                       date_time_format: str) -> None:
+    try:
+        expiration_date_time_string = response['expires_at']
+    except KeyError:
+        return
+
+    response['expires_at'] = datetime.strptime(expiration_date_time_string,
+                                               date_time_format)
