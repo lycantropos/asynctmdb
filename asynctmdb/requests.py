@@ -28,3 +28,5 @@ get = partial(send,
               method=ClientSession.get)
 post = partial(send,
                method=ClientSession.post)
+delete = partial(send,
+                 method=ClientSession.delete)
