@@ -103,7 +103,7 @@ and covered with tests.
 -  ✘ Get Now Playing
 -  ✘ Get Popular
 -  ✘ Get Top Rated
--  Get Upcoming
+-  ✘ Get Upcoming
 
 **NETWORKS**
 -  Get Details
