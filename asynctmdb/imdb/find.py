@@ -44,11 +44,14 @@ async def movie(imdb_id: str,
         record, = records
     except ValueError as err:
         if records:
-            err_msg = (f'Movie imdb id "{imdb_id}" is ambiguous: '
-                       f'found {len(records)} records.')
+            err_msg = ('Movie imdb id "{imdb_id}" is ambiguous: '
+                       'found {records_count} records.'
+                       .format(imdb_id=imdb_id,
+                               records_count=len(records)))
         else:
             err_msg = ('No record found for movie with '
-                       f'IMDb id "{imdb_id}".')
+                       'IMDb id "{imdb_id}".'
+                       .format(imdb_id=imdb_id))
         raise ValueError(err_msg) from err
     else:
         normalize_movie(record)

@@ -17,7 +17,9 @@ from asynctmdb.config import API_BASE_URL
 from asynctmdb.utils import urljoin
 
 MAX_TIME_RANGE_LENGTH = timedelta(days=14)
-RELEASE_DATE_TIME_FORMAT = f'{DATE_FORMAT}T{TIME_FORMAT}.%fZ'
+RELEASE_DATE_TIME_FORMAT = ('{date_format}T{time_format}.%fZ'
+                            .format(date_format=DATE_FORMAT,
+                                    time_format=TIME_FORMAT))
 NOW_PLAYING_DATES_KEYS = ['minimum', 'maximum']
 
 
@@ -126,7 +128,8 @@ async def changes(movie_id: int,
         if end_date - start_date > MAX_TIME_RANGE_LENGTH:
             err_msg = ('Invalid date range: '
                        'should be a range no longer '
-                       f'than {MAX_TIME_RANGE_LENGTH.days} days.')
+                       'than {days_count} days.'
+                       .format(days_count=MAX_TIME_RANGE_LENGTH.days))
             raise ValueError(err_msg)
 
     params = {}

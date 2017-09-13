@@ -2,7 +2,9 @@ from enum import IntEnum
 
 DATE_FORMAT = '%Y-%m-%d'
 TIME_FORMAT = '%H:%M:%S'
-DATE_TIME_FORMAT = f'{DATE_FORMAT} {TIME_FORMAT} %Z'
+DATE_TIME_FORMAT = ('{date_format} {time_format} %Z'
+                    .format(date_format=DATE_FORMAT,
+                            time_format=TIME_FORMAT))
 
 
 class StatusCode(IntEnum):
