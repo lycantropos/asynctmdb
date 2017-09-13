@@ -178,9 +178,24 @@ and covered with tests.
 -  Get Videos
 
 ## Running tests
+Make sure that next files are presented in project's directory:
+- **key**: `TMDb` API key ([instructions](https://developers.themoviedb.org/3/getting-started/introduction)), 
+e.g.:
+
+    ```text
+    c15d35806311efebcecd5faabe7eaffc
+    ```
+- **login**: `TMDb` login info (user name & password separated by newline), 
+e.g.:
+
+    ```text
+    johndoe
+    youwillneverguess
+    ```
+
 Plain
 ```bash
-./set-api-key.sh python3 setup.py test
+./set-api-key.sh ./set-login.sh python3.6 setup.py test
 ```
 
 Inside `Docker` container
