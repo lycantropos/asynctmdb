@@ -45,7 +45,7 @@ extlinks_keys = ['getting-started',
                  'genres',
                  'find',
                  'movies']
-extlinks = {key: (urljoin(api_docs_base_url, f'{key}/%s'), None)
+extlinks = {key: (urljoin(api_docs_base_url, key, '%s'), None)
             for key in extlinks_keys}
 
 # Add any paths that contain templates here, relative to this directory.
