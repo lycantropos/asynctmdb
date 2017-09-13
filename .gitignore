@@ -32,5 +32,6 @@ result.xml
 # IntelliJ IDEA
 .idea/
 
-# API key
+# TMDb data
 key
+login
