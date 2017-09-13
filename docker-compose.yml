@@ -8,6 +8,8 @@ services:
       - .:/asynctmdb/
     environment:
       - TMDb.API.Key=$TMDB_API_KEY
+      - TMDb.User.Name=$TMDB_USER_NAME
+      - TMDb.User.Password=$TMDB_USER_PASSWORD
     entrypoint: python3
     command: setup.py test
     extra_hosts:
