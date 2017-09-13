@@ -7,9 +7,7 @@ services:
     volumes:
       - .:/asynctmdb/
     environment:
-      - API.BaseURL=https://api.themoviedb.org
-      - API.Version=3
-      - API.Key=$API_KEY
+      - TMDb.API.Key=$TMDB_API_KEY
     entrypoint: python3
     command: setup.py test
     extra_hosts:

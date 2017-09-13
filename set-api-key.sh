@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export API_KEY=$(cat key)
-echo Running with API_KEY=${API_KEY}
+export TMDB_API_KEY=$(cat key)
+echo Running with TMDB_API_KEY=${TMDB_API_KEY}
 
 exec "$@"

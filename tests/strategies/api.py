@@ -3,13 +3,10 @@ import string
 
 from hypothesis import strategies
 
-from asynctmdb.utils import urljoin
+from asynctmdb.config import API_BASE_URL
 
-api_base_url = urljoin(os.environ['API.BaseURL'],
-                       os.environ['API.Version'])
-api_key = os.environ['API.Key']
-
-api_base_urls = strategies.just(api_base_url)
+api_key = os.environ['TMDb.API.Key']
+api_base_urls = strategies.just(API_BASE_URL)
 api_keys = strategies.just(api_key)
 non_heximal_digits_characters = strategies.characters(
         blacklist_characters=string.hexdigits)
