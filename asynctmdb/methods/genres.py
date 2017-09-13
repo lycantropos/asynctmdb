@@ -16,6 +16,11 @@ async def movie(*,
                 api_key: str,
                 language: str = None,
                 session: ClientSession) -> GenresType:
+    """
+    Get the list of official genres for movies.
+
+    More info at :genres:`TMDb docs <get-movie-list>`.
+    """
     method_url = urljoin(base_method_url(api_base_url), 'movie/list')
 
     params = {}
@@ -34,6 +39,11 @@ async def tv(*,
              api_key: str,
              language: str = None,
              session: ClientSession) -> GenresType:
+    """
+    Get the list of official genres for TV shows.
+
+    More info at :genres:`TMDb docs <get-tv-list>`.
+    """
     method_url = urljoin(base_method_url(api_base_url), 'tv/list')
 
     params = {}

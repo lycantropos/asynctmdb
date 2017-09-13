@@ -17,6 +17,15 @@ async def create_request_token(*,
                                session: ClientSession,
                                date_time_format: str = DATE_TIME_FORMAT
                                ) -> Dict[str, Union[int, str, datetime]]:
+    """
+    Create a temporary request token
+    that can be used to validate a TMDb user login.
+
+    More details about how this works can be found
+    :authentication:`here <how-do-i-generate-a-session-id>`.
+
+    More info at :authentication:`TMDb docs <create-request-token>`.
+    """
     method_url = urljoin(base_method_url(api_base_url),
                          'token',
                          'new')
@@ -34,6 +43,16 @@ async def create_session(*,
                          request_token: str,
                          session: ClientSession
                          ) -> Dict[str, Union[int, str]]:
+    """
+    Create a fully valid session.
+
+    This method can be used once a user has validated the request token.
+
+    More details about how this works can be found
+    :authentication:`here <how-do-i-generate-a-session-id>`.
+
+    More info at :authentication:`TMDb docs <create-request-token>`.
+    """
     method_url = urljoin(base_method_url(api_base_url),
                          'session',
                          'new')
@@ -52,6 +71,21 @@ async def validate_request_token(*,
                                  request_token: str,
                                  session: ClientSession
                                  ) -> Dict[str, Union[int, str]]:
+    """
+    Validate a request token with username and password.
+
+    **Caution**
+
+    Please note, using this method is strongly discouraged.
+
+    The preferred method of validating a request token is
+    to have a user authenticate the request via the TMDb website.
+
+    More details about how this works can be found
+    :authentication:`here <how-do-i-generate-a-session-id>`.
+
+    More info at :authentication:`TMDb docs <validate-request-token>`.
+    """
     method_url = urljoin(base_method_url(api_base_url),
                          'token',
                          'validate_with_login')
@@ -70,6 +104,27 @@ async def create_guest_session(*,
                                session: ClientSession,
                                date_time_format: str = DATE_TIME_FORMAT
                                ) -> Dict[str, Union[int, str, datetime]]:
+    """
+    Create a new guest session.
+
+    Guest sessions are a type of session that will let a user rate movies
+    and TV shows but not require them to have a TMDb user account.
+
+    More information about user authentication can be found
+    :authentication:`here <how-do-i-generate-a-session-id>`.
+
+    Please note, there should be generated only a single guest session
+    per user (or device) as you will be able to attach the ratings
+    to a TMDb user account in the future.
+
+    There is also IP limits in place so you should always make sure
+    it's the end user doing the guest session actions.
+
+    If a guest session is not used for the first time within 24 hours,
+    it will be automatically deleted.
+
+    More info at :authentication:`TMDb docs <create-guest-session>`.
+    """
     method_url = urljoin(base_method_url(api_base_url),
                          'guest_session',
                          'new')

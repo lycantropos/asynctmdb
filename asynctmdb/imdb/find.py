@@ -17,6 +17,11 @@ async def movie(imdb_id: str,
                 api_key: str,
                 language: str = None,
                 session: ClientSession) -> Dict[str, Any]:
+    """
+    Search TMDb movie details by IMDb ID.
+
+    :raise: ``ValueError`` if IMDb ID is invalid or there is no details found.
+    """
     params = {}
     if language is not None:
         params['language'] = language

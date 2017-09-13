@@ -20,6 +20,30 @@ async def by_id(external_id: str,
                 language: str = None,
                 external_source: str,
                 session: ClientSession) -> Dict[str, Any]:
+    """
+    Search for objects by an external id (for instance, an IMDb ID).
+
+    This method will search all objects (movies, TV shows and people)
+    and return the results in a single response.
+
+    The supported external sources for each object are as follows.
+
+    +-------------+-----------+-----------+-----------+-----------+-----------+
+    |             |Movies     |TV Shows   |TV Seasons |TV Episodes|People     |
+    +=============+===========+===========+===========+===========+===========+
+    |IMDb ID      |✓          |✓          |✗          |✓          |✓          |
+    +-------------+-----------+-----------+-----------+-----------+-----------+
+    |Freebase MID |✗          |✓          |✓          |✓          |✓          |
+    +-------------+-----------+-----------+-----------+-----------+-----------+
+    |Freebase ID  |✗          |✓          |✓          |✓          |✓          |
+    +-------------+-----------+-----------+-----------+-----------+-----------+
+    |TVDB ID      |✗          |✓          |✓          |✓          |✗          |
+    +-------------+-----------+-----------+-----------+-----------+-----------+
+    |TVRage ID    |✗          |✓          |✓          |✓          |✓          |
+    +-------------+-----------+-----------+-----------+-----------+-----------+
+
+    More info at :find:`TMDb docs <find-by-id>`.
+    """
     method_url = urljoin(api_base_url, 'find', external_id)
 
     params = {}

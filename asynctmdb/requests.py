@@ -16,6 +16,7 @@ async def send(*,
                json_body: Dict[str, Any] = None,
                **params: Dict[str, str]
                ) -> Dict[str, Any]:
+    """Perform HTTP request with JSON-serializable response."""
     async with method(session,
                       method_url,
                       json=json_body,
