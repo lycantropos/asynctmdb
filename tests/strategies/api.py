@@ -5,7 +5,7 @@ from hypothesis import strategies
 
 from asynctmdb.config import API_BASE_URL
 
-api_key = os.environ['TMDb.API.Key']
+api_key = os.environ['TMDB_API_KEY']
 api_base_urls = strategies.just(API_BASE_URL)
 api_keys = strategies.just(api_key)
 non_heximal_digits_characters = strategies.characters(
