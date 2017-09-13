@@ -166,7 +166,9 @@
 
 <span class="n">DATE_FORMAT</span> <span class="o">=</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span>
 <span class="n">TIME_FORMAT</span> <span class="o">=</span> <span class="s1">&#39;%H:%M:%S&#39;</span>
-<span class="n">DATE_TIME_FORMAT</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{DATE_FORMAT}</span><span class="s1"> </span><span class="si">{TIME_FORMAT}</span><span class="s1"> %Z&#39;</span>
+<span class="n">DATE_TIME_FORMAT</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{date_format}</span><span class="s1"> </span><span class="si">{time_format}</span><span class="s1"> %Z&#39;</span>
+                    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date_format</span><span class="o">=</span><span class="n">DATE_FORMAT</span><span class="p">,</span>
+                            <span class="n">time_format</span><span class="o">=</span><span class="n">TIME_FORMAT</span><span class="p">))</span>
 
 
 <div class="viewcode-block" id="StatusCode"><a class="viewcode-back" href="../../asynctmdb.html#asynctmdb.common.StatusCode">[docs]</a><span class="k">class</span> <span class="nc">StatusCode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>

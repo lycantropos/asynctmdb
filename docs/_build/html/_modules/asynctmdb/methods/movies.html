@@ -181,7 +181,9 @@
 <span class="kn">from</span> <span class="nn">asynctmdb.utils</span> <span class="k">import</span> <span class="n">urljoin</span>
 
 <span class="n">MAX_TIME_RANGE_LENGTH</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">RELEASE_DATE_TIME_FORMAT</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{DATE_FORMAT}</span><span class="s1">T</span><span class="si">{TIME_FORMAT}</span><span class="s1">.</span><span class="si">%f</span><span class="s1">Z&#39;</span>
+<span class="n">RELEASE_DATE_TIME_FORMAT</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{date_format}</span><span class="s1">T</span><span class="si">{time_format}</span><span class="s1">.</span><span class="si">%f</span><span class="s1">Z&#39;</span>
+                            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date_format</span><span class="o">=</span><span class="n">DATE_FORMAT</span><span class="p">,</span>
+                                    <span class="n">time_format</span><span class="o">=</span><span class="n">TIME_FORMAT</span><span class="p">))</span>
 <span class="n">NOW_PLAYING_DATES_KEYS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;minimum&#39;</span><span class="p">,</span> <span class="s1">&#39;maximum&#39;</span><span class="p">]</span>
 
 
@@ -290,7 +292,8 @@
         <span class="k">if</span> <span class="n">end_date</span> <span class="o">-</span> <span class="n">start_date</span> <span class="o">&gt;</span> <span class="n">MAX_TIME_RANGE_LENGTH</span><span class="p">:</span>
             <span class="n">err_msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Invalid date range: &#39;</span>
                        <span class="s1">&#39;should be a range no longer &#39;</span>
-                       <span class="n">f</span><span class="s1">&#39;than </span><span class="si">{MAX_TIME_RANGE_LENGTH.days}</span><span class="s1"> days.&#39;</span><span class="p">)</span>
+                       <span class="s1">&#39;than </span><span class="si">{days_count}</span><span class="s1"> days.&#39;</span>
+                       <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">days_count</span><span class="o">=</span><span class="n">MAX_TIME_RANGE_LENGTH</span><span class="o">.</span><span class="n">days</span><span class="p">))</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
     <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>

@@ -180,6 +180,15 @@
   <div class="section" id="module-asynctmdb.methods.movies">
 <span id="movies-methods-module"></span><h1><a class="reference external" href="https://developers.themoviedb.org/3/movies/">movies methods</a> module<a class="headerlink" href="#module-asynctmdb.methods.movies" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
+<dt id="asynctmdb.methods.movies.details">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">details</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>append_to_response: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the primary information about a movie.</p>
+<p>Supports <code class="docutils literal"><span class="pre">append_to_response</span></code>.
+Read more about this <a class="reference external" href="https://developers.themoviedb.org/3/getting-started/append-to-response">here</a>.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-details">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="asynctmdb.methods.movies.account_states">
 <code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">account_states</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>session_id: str</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#account_states"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.account_states" title="Permalink to this definition">¶</a></dt>
 <dd><p>Grab the following account states for a session:</p>
@@ -218,25 +227,6 @@ and <code class="docutils literal"><span class="pre">end_date</span></code> quer
 </dd></dl>
 
 <dl class="function">
-<dt id="asynctmdb.methods.movies.delete_rating">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">delete_rating</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>guest_session_id: str = None</em>, <em>session_id: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#delete_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.delete_rating" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove your rating for a movie.</p>
-<p>A valid session or guest session ID is required.
-You can read more about how this works
-<a class="reference external" href="https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id">here</a>.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/delete-movie-rating">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="asynctmdb.methods.movies.details">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">details</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>append_to_response: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.details" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the primary information about a movie.</p>
-<p>Supports <code class="docutils literal"><span class="pre">append_to_response</span></code>.
-Read more about this <a class="reference external" href="https://developers.themoviedb.org/3/getting-started/append-to-response">here</a>.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-details">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="asynctmdb.methods.movies.images">
 <code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">images</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>include_image_language: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the images that belong to a movie.</p>
@@ -259,11 +249,59 @@ This should be a comma seperated value like so:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="asynctmdb.methods.movies.latest">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">latest</code><span class="sig-paren">(</span><em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#latest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.latest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the most newly created movie.</p>
-<p>This is a live response and will continuously change.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/">TMDb docs</a>.</p>
+<dt id="asynctmdb.methods.movies.release_dates">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">release_dates</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>session: aiohttp.client.ClientSession</em>, <em>format_string: str = '%Y-%m-%dT%H:%M:%S.%fZ'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#release_dates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.release_dates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the release date along with the certification for a movie.</p>
+<p>Release dates support different types:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Premiere</li>
+<li>Theatrical (limited)</li>
+<li>Theatrical</li>
+<li>Digital</li>
+<li>Physical</li>
+<li>TV</li>
+</ol>
+</div></blockquote>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-release-dates">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.videos">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">videos</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#videos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.videos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the videos that have been added to a movie.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-videos">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.translations">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">translations</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#translations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.translations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of translations that have been created for a movie.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-translations">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.recommendations">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">recommendations</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>session: aiohttp.client.ClientSession</em>, <em>format_string: str = '%Y-%m-%d'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#recommendations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.recommendations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of recommended movies for a movie.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-recommendations">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.similar">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">similar</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>session: aiohttp.client.ClientSession</em>, <em>format_string: str = '%Y-%m-%d'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#similar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.similar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of similar movies.</p>
+<p>This is <strong>not</strong> the same as the “Recommendation” system
+you see on the website.</p>
+<p>These items are assembled by looking at keywords and genres.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-similar-movies">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.reviews">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">reviews</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#reviews"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.reviews" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the user reviews for a movie.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-reviews">TMDb docs</a>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -271,6 +309,34 @@ This should be a comma seperated value like so:</p>
 <code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">lists</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.lists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a list of lists that this movie belongs to.</p>
 <p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-lists">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.rate">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">rate</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>rating: float</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>guest_session_id: str = None</em>, <em>session_id: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rate a movie.</p>
+<p>A valid session or guest session ID is required.
+You can read more about how this works
+<a class="reference external" href="https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id">here</a>.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/rate-movie">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.delete_rating">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">delete_rating</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>guest_session_id: str = None</em>, <em>session_id: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#delete_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.delete_rating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove your rating for a movie.</p>
+<p>A valid session or guest session ID is required.
+You can read more about how this works
+<a class="reference external" href="https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id">here</a>.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/delete-movie-rating">TMDb docs</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asynctmdb.methods.movies.latest">
+<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">latest</code><span class="sig-paren">(</span><em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#latest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.latest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the most newly created movie.</p>
+<p>This is a live response and will continuously change.</p>
+<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/">TMDb docs</a>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -294,69 +360,10 @@ for theatrical release dates within the specified country.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="asynctmdb.methods.movies.rate">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">rate</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>rating: float</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>guest_session_id: str = None</em>, <em>session_id: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rate a movie.</p>
-<p>A valid session or guest session ID is required.
-You can read more about how this works
-<a class="reference external" href="https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id">here</a>.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/rate-movie">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="asynctmdb.methods.movies.recommendations">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">recommendations</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>session: aiohttp.client.ClientSession</em>, <em>format_string: str = '%Y-%m-%d'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#recommendations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.recommendations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a list of recommended movies for a movie.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-recommendations">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="asynctmdb.methods.movies.release_dates">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">release_dates</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>session: aiohttp.client.ClientSession</em>, <em>format_string: str = '%Y-%m-%dT%H:%M:%S.%fZ'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#release_dates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.release_dates" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the release date along with the certification for a movie.</p>
-<p>Release dates support different types:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Premiere</li>
-<li>Theatrical (limited)</li>
-<li>Theatrical</li>
-<li>Digital</li>
-<li>Physical</li>
-<li>TV</li>
-</ol>
-</div></blockquote>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-release-dates">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="asynctmdb.methods.movies.reviews">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">reviews</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#reviews"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.reviews" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the user reviews for a movie.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-reviews">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="asynctmdb.methods.movies.similar">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">similar</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>session: aiohttp.client.ClientSession</em>, <em>format_string: str = '%Y-%m-%d'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#similar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.similar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a list of similar movies.</p>
-<p>This is <strong>not</strong> the same as the “Recommendation” system
-you see on the website.</p>
-<p>These items are assembled by looking at keywords and genres.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-similar-movies">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="asynctmdb.methods.movies.top_rated">
 <code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">top_rated</code><span class="sig-paren">(</span><em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>page: int = None</em>, <em>region: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#top_rated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.top_rated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the top rated movies on TMDb.</p>
 <p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-top-rated-movies">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="asynctmdb.methods.movies.translations">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">translations</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#translations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.translations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a list of translations that have been created for a movie.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-translations">TMDb docs</a>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -369,13 +376,6 @@ that have a release type of 2 or 3 within the specified date range.</p>
 which will narrow the search to only look for
 theatrical release dates within the specified country.</p>
 <p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-upcoming">TMDb docs</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="asynctmdb.methods.movies.videos">
-<code class="descclassname">asynctmdb.methods.movies.</code><code class="descname">videos</code><span class="sig-paren">(</span><em>movie_id: int</em>, <em>*</em>, <em>api_base_url: str = 'https://api.themoviedb.org/3'</em>, <em>api_key: str</em>, <em>language: str = None</em>, <em>session: aiohttp.client.ClientSession</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference internal" href="_modules/asynctmdb/methods/movies.html#videos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asynctmdb.methods.movies.videos" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the videos that have been added to a movie.</p>
-<p>More info at <a class="reference external" href="https://developers.themoviedb.org/3/movies/get-movie-videos">TMDb docs</a>.</p>
 </dd></dl>
 
 </div>
