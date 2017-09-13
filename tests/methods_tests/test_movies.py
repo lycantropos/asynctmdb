@@ -482,7 +482,10 @@ async def test_movie_translations(movie_id: int,
     assert record_id >= min_movie_id
     assert record_id == movie_id
     assert are_valid_results(results)
-    assert all(map(is_non_empty_string, names))
+    # there are cases with empty string ``name``,
+    # e.g. ``movie_id`` 278035
+    assert all(isinstance(name, str)
+               for name in names)
     assert all(map(is_non_empty_string, english_names))
     assert invalid_api_key_status_code == StatusCode.INVALID_API_KEY
     assert nonexistent_movie_status_code == StatusCode.RESOURCE_NOT_FOUND
@@ -649,7 +652,7 @@ async def test_movie_reviews(movie_id: int,
     assert record_id >= min_movie_id
     assert record_id == movie_id
     assert are_valid_results(results)
-    assert all(url == f'https://www.themoviedb.org/review/{review_id}'
+    assert all(url == 'https://www.themoviedb.org/review/{}'.format(review_id)
                for review_id, url in zip(reviews_ids, urls))
     assert invalid_api_key_status_code == StatusCode.INVALID_API_KEY
     assert nonexistent_movie_status_code == StatusCode.RESOURCE_NOT_FOUND

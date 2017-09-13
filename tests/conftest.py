@@ -21,7 +21,7 @@ def explore_pytest_plugins(base_dir: str,
                            fixtures_pkg_name: str) -> List[str]:
     fixtures_pkg_path = os.path.join(base_dir,
                                      fixtures_pkg_name)
-    return [f'{fixtures_pkg_name}.{name}'
+    return [fixtures_pkg_name + '.' + name
             for _, name, _ in pkgutil.iter_modules([fixtures_pkg_path])]
 
 

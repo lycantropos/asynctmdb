@@ -14,7 +14,7 @@ MIN_MOVIE_ID = 2
 MAX_MOVIE_ID = load_max_movie_id(api_base_url=example(api_base_urls),
                                  api_key=example(api_keys))
 MIN_PAGE_NUMBER = 1
-MAX_PAGE_NUMBER = 1_000
+MAX_PAGE_NUMBER = 1000
 
 
 def ratings(min_movie_rating: float = 0.5,
@@ -34,7 +34,7 @@ nonexistent_movies_ids = (strategies.integers(max_value=MIN_MOVIE_ID - 1)
                           # than 1_000 new records in TMDb
                           # while tests session is running
                           | strategies.integers(
-        min_value=MAX_MOVIE_ID + 1_000))
+        min_value=MAX_MOVIE_ID + 1000))
 movies_changes_date_times = strategies.datetimes(
         min_datetime=datetime.combine(TMDB_FOUNDATION_DATE,
                                       time()),
