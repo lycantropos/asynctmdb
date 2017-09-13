@@ -84,7 +84,7 @@ and covered with tests.
 
 **MOVIES**
 -  ✘ Get Details
--  ✔ Get Account States
+-  ✘ Get Account States
 -  ✘ Get Alternative Titles
 -  ✘ Get Changes
 -  ✘ Get Credits

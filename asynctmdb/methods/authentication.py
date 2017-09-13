@@ -28,6 +28,22 @@ async def create_request_token(*,
     return response
 
 
+async def create_session(*,
+                         api_base_url: str = API_BASE_URL,
+                         api_key: str,
+                         request_token: str,
+                         session: ClientSession
+                         ) -> Dict[str, Union[int, str]]:
+    method_url = urljoin(base_method_url(api_base_url),
+                         'session',
+                         'new')
+    response = await requests.get(method_url=method_url,
+                                  session=session,
+                                  api_key=api_key,
+                                  request_token=request_token)
+    return response
+
+
 async def validate_request_token(*,
                                  api_base_url: str = API_BASE_URL,
                                  api_key: str,
@@ -44,22 +60,6 @@ async def validate_request_token(*,
                                   api_key=api_key,
                                   username=username,
                                   password=password,
-                                  request_token=request_token)
-    return response
-
-
-async def create_session(*,
-                         api_base_url: str = API_BASE_URL,
-                         api_key: str,
-                         request_token: str,
-                         session: ClientSession
-                         ) -> Dict[str, Union[int, str]]:
-    method_url = urljoin(base_method_url(api_base_url),
-                         'session',
-                         'new')
-    response = await requests.get(method_url=method_url,
-                                  session=session,
-                                  api_key=api_key,
                                   request_token=request_token)
     return response
 

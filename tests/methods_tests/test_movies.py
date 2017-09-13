@@ -57,11 +57,26 @@ async def test_movie_details(movie_id: int,
 
 
 @pytest.mark.asyncio
-async def test_movie_account_states(movie_id: int,
+async def test_account_movie_states(movie_id: int,
+                                    min_movie_id: int,
                                     api_base_url: str,
                                     api_key: str,
+                                    invalid_api_key: str,
+                                    session_id: str,
                                     invalid_session_id: str,
                                     session: ClientSession) -> None:
+    record = await movies.account_states(
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session_id=session_id,
+            session=session)
+    invalid_api_key_response = await movies.account_states(
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session_id=session_id,
+            session=session)
     invalid_session_response = await movies.account_states(
             movie_id,
             api_base_url=api_base_url,
@@ -69,8 +84,16 @@ async def test_movie_account_states(movie_id: int,
             session_id=invalid_session_id,
             session=session)
 
+    record_id = record['id']
+    invalid_api_key_status_code = invalid_api_key_response['status_code']
     invalid_session_status_code = invalid_session_response['status_code']
 
+    assert isinstance(record, dict)
+    assert isinstance(invalid_api_key_response, dict)
+    assert is_positive_integer(record_id)
+    assert record_id >= min_movie_id
+    assert record_id == movie_id
+    assert invalid_api_key_status_code == StatusCode.INVALID_API_KEY
     assert invalid_session_status_code == StatusCode.AUTHENTICATION_FAILED
 
 
