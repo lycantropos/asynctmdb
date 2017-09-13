@@ -6,7 +6,7 @@ from asynctmdb.config import PROJECT_NAME
 project_base_url = 'https://github.com/lycantropos/asynctmdb/'
 setup(name=PROJECT_NAME,
       packages=find_packages(exclude=('tests',)),
-      version='0.0.0',
+      version='0.0.1',
       description='Asynchronous working with TMDB API.',
       author='Azat Ibrakov',
       author_email='azatibrakov@gmail.com',
