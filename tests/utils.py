@@ -1,3 +1,4 @@
+import string
 from typing import (Any,
                     Iterable,
                     Dict, List)
@@ -27,6 +28,12 @@ def is_non_negative_integer(value: Any) -> bool:
 
 def is_non_empty_string(value: Any) -> bool:
     return isinstance(value, str) and value
+
+
+def is_non_empty_hex_string(value: Any) -> bool:
+    return (is_non_empty_string(value) and
+            all(character in string.hexdigits
+                for character in value))
 
 
 def is_valid_paginated_record(
