@@ -12,6 +12,7 @@
 # Distribution / packaging
 bin/
 build/
+_build/
 develop-eggs/
 dist/
 eggs/
