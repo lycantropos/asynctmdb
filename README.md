@@ -23,7 +23,7 @@ and covered with tests.
 **AUTHENTICATION**
 -  ✘ Create Request Token
 -  ✔ Create Session
--  Create Session With Login (deprecated)
+-  ✘ Create Session With Login (deprecated)
 -  ✘ Create Guest Session
 
 **CERTIFICATIONS**
