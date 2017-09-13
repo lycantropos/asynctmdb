@@ -5,25 +5,34 @@ from typing import (Any,
 
 from aiohttp import ClientSession
 
-from asynctmdb.common import DATE_FORMAT
+from asynctmdb.common import (DATE_FORMAT,
+                              StatusCode)
+from asynctmdb.config import API_BASE_URL
 from asynctmdb.methods import find
 
 
 async def movie(imdb_id: str,
                 *,
-                api_base_url: str,
+                api_base_url: str = API_BASE_URL,
                 api_key: str,
-                language: str = 'en-US',
+                language: str = None,
                 session: ClientSession) -> Dict[str, Any]:
+    params = {}
+    if language is not None:
+        params['language'] = language
+
     response = await find.by['imdb_id'](imdb_id,
                                         api_base_url=api_base_url,
                                         api_key=api_key,
-                                        language=language,
-                                        session=session)
+                                        session=session,
+                                        **params)
     try:
         records = response['movie_results']
     except KeyError as err:
-        err_msg = f'Invalid IMDb id: "{imdb_id}".'
+        status_code = response['status_code']
+        if status_code != StatusCode.RESOURCE_NOT_FOUND:
+            return response
+        err_msg = 'Invalid IMDb id: "{imdb_id}".'
         raise ValueError(err_msg) from err
 
     try:

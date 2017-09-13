@@ -13,6 +13,7 @@ from asynctmdb import requests
 from asynctmdb.common import (DATE_FORMAT,
                               TIME_FORMAT,
                               DATE_TIME_FORMAT)
+from asynctmdb.config import API_BASE_URL
 from asynctmdb.utils import urljoin
 
 MAX_TIME_RANGE_LENGTH = timedelta(days=14)
@@ -22,7 +23,7 @@ NOW_PLAYING_DATES_KEYS = ['minimum', 'maximum']
 
 async def details(movie_id: int,
                   *,
-                  api_base_url: str,
+                  api_base_url: str = API_BASE_URL,
                   api_key: str,
                   language: str = None,
                   session: ClientSession) -> Dict[str, Any]:
@@ -41,7 +42,7 @@ async def details(movie_id: int,
 
 async def account_states(movie_id: int,
                          *,
-                         api_base_url: str,
+                         api_base_url: str = API_BASE_URL,
                          api_key: str,
                          session_id: str,
                          session: ClientSession) -> Dict[str, Any]:
@@ -56,7 +57,7 @@ async def account_states(movie_id: int,
 
 async def alternative_titles(movie_id: int,
                              *,
-                             api_base_url: str,
+                             api_base_url: str = API_BASE_URL,
                              api_key: str,
                              country: str = None,
                              session: ClientSession) -> Dict[str, Any]:
@@ -76,7 +77,7 @@ async def alternative_titles(movie_id: int,
 
 async def changes(movie_id: int,
                   *,
-                  api_base_url: str,
+                  api_base_url: str = API_BASE_URL,
                   api_key: str,
                   start_date: datetime = None,
                   end_date: datetime = None,
@@ -112,7 +113,7 @@ async def changes(movie_id: int,
 
 async def credits(movie_id: int,
                   *,
-                  api_base_url: str,
+                  api_base_url: str = API_BASE_URL,
                   api_key: str,
                   session: ClientSession) -> Dict[str, Any]:
     method_url = urljoin(base_method_url(api_base_url, movie_id),
@@ -125,7 +126,7 @@ async def credits(movie_id: int,
 
 async def images(movie_id: int,
                  *,
-                 api_base_url: str,
+                 api_base_url: str = API_BASE_URL,
                  api_key: str,
                  language: str = None,
                  session: ClientSession) -> Dict[str, Any]:
@@ -145,7 +146,7 @@ async def images(movie_id: int,
 
 async def keywords(movie_id: int,
                    *,
-                   api_base_url: str,
+                   api_base_url: str = API_BASE_URL,
                    api_key: str,
                    session: ClientSession) -> Dict[str, Any]:
     method_url = urljoin(base_method_url(api_base_url, movie_id),
@@ -158,7 +159,7 @@ async def keywords(movie_id: int,
 
 async def release_dates(movie_id: int,
                         *,
-                        api_base_url: str,
+                        api_base_url: str = API_BASE_URL,
                         api_key: str,
                         session: ClientSession,
                         format_string: str = RELEASE_DATE_TIME_FORMAT
@@ -175,7 +176,7 @@ async def release_dates(movie_id: int,
 
 async def videos(movie_id: int,
                  *,
-                 api_base_url: str,
+                 api_base_url: str = API_BASE_URL,
                  api_key: str,
                  language: str = None,
                  session: ClientSession) -> Dict[str, Any]:
@@ -195,7 +196,7 @@ async def videos(movie_id: int,
 
 async def translations(movie_id: int,
                        *,
-                       api_base_url: str,
+                       api_base_url: str = API_BASE_URL,
                        api_key: str,
                        session: ClientSession) -> Dict[str, Any]:
     method_url = urljoin(base_method_url(api_base_url, movie_id),
@@ -209,7 +210,7 @@ async def translations(movie_id: int,
 
 async def recommendations(movie_id: int,
                           *,
-                          api_base_url: str,
+                          api_base_url: str = API_BASE_URL,
                           api_key: str,
                           language: str = None,
                           page: int = None,
@@ -235,7 +236,7 @@ async def recommendations(movie_id: int,
 
 async def similar(movie_id: int,
                   *,
-                  api_base_url: str,
+                  api_base_url: str = API_BASE_URL,
                   api_key: str,
                   language: str = None,
                   page: int = None,
@@ -261,7 +262,7 @@ async def similar(movie_id: int,
 
 async def reviews(movie_id: int,
                   *,
-                  api_base_url: str,
+                  api_base_url: str = API_BASE_URL,
                   api_key: str,
                   language: str = None,
                   page: int = None,
@@ -284,7 +285,7 @@ async def reviews(movie_id: int,
 
 async def lists(movie_id: int,
                 *,
-                api_base_url: str,
+                api_base_url: str = API_BASE_URL,
                 api_key: str,
                 language: str = None,
                 page: int = None,
@@ -308,7 +309,7 @@ async def lists(movie_id: int,
 async def rate(movie_id: int,
                *,
                rating: float,
-               api_base_url: str,
+               api_base_url: str = API_BASE_URL,
                api_key: str,
                guest_session_id: str = None,
                session_id: str = None,
@@ -332,7 +333,7 @@ async def rate(movie_id: int,
 
 async def delete_rating(movie_id: int,
                         *,
-                        api_base_url: str,
+                        api_base_url: str = API_BASE_URL,
                         api_key: str,
                         guest_session_id: str = None,
                         session_id: str = None,
@@ -354,7 +355,7 @@ async def delete_rating(movie_id: int,
 
 
 async def latest(*,
-                 api_base_url: str,
+                 api_base_url: str = API_BASE_URL,
                  api_key: str,
                  language: str = None,
                  session: ClientSession) -> Dict[str, Any]:
@@ -372,7 +373,7 @@ async def latest(*,
 
 
 async def now_playing(*,
-                      api_base_url: str,
+                      api_base_url: str = API_BASE_URL,
                       api_key: str,
                       language: str = None,
                       page: int = None,
@@ -402,7 +403,7 @@ async def now_playing(*,
 
 
 async def popular(*,
-                  api_base_url: str,
+                  api_base_url: str = API_BASE_URL,
                   api_key: str,
                   language: str = None,
                   page: int = None,
@@ -426,7 +427,7 @@ async def popular(*,
 
 
 async def top_rated(*,
-                    api_base_url: str,
+                    api_base_url: str = API_BASE_URL,
                     api_key: str,
                     language: str = None,
                     page: int = None,
@@ -450,7 +451,7 @@ async def top_rated(*,
 
 
 async def upcoming(*,
-                   api_base_url: str,
+                   api_base_url: str = API_BASE_URL,
                    api_key: str,
                    language: str = None,
                    page: int = None,

@@ -5,6 +5,7 @@ from typing import (Any,
 from aiohttp import ClientSession
 
 from asynctmdb import requests
+from asynctmdb.config import API_BASE_URL
 from asynctmdb.utils import urljoin
 
 external_sources = {'imdb_id',
@@ -14,7 +15,7 @@ external_sources = {'imdb_id',
 
 async def by_id(external_id: str,
                 *,
-                api_base_url: str,
+                api_base_url: str = API_BASE_URL,
                 api_key: str,
                 language: str = None,
                 external_source: str,

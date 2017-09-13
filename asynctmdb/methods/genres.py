@@ -5,13 +5,14 @@ from typing import (Union,
 from aiohttp import ClientSession
 
 from asynctmdb import requests
+from asynctmdb.config import API_BASE_URL
 from asynctmdb.utils import urljoin
 
 GenresType = List[Dict[str, Union[int, str]]]
 
 
 async def movie(*,
-                api_base_url: str,
+                api_base_url: str = API_BASE_URL,
                 api_key: str,
                 language: str = None,
                 session: ClientSession) -> GenresType:
@@ -29,7 +30,7 @@ async def movie(*,
 
 
 async def tv(*,
-             api_base_url: str,
+             api_base_url: str = API_BASE_URL,
              api_key: str,
              language: str = None,
              session: ClientSession) -> GenresType:
