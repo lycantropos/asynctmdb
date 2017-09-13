@@ -6,6 +6,18 @@ from aiohttp import ClientSession
 
 from asynctmdb.methods.authentication import (create_request_token,
                                               create_guest_session)
+from tests import strategies
+from tests.utils import example
+
+
+@pytest.fixture(scope='function')
+def user_name() -> str:
+    return example(strategies.users_names)
+
+
+@pytest.fixture(scope='function')
+def user_password() -> str:
+    return example(strategies.users_passwords)
 
 
 @pytest.fixture(scope='function')
