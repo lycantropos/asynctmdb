@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asynctmdb.imdb.find &mdash; asynctmdb 0.0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="asynctmdb 0.0.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> asynctmdb
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../asynctmdb.html">Subpackages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../asynctmdb.html#submodules">Submodules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">asynctmdb</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>asynctmdb.imdb.find</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for asynctmdb.imdb.find</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">suppress</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="p">(</span><span class="n">Any</span><span class="p">,</span>
+                    <span class="n">Dict</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">aiohttp</span> <span class="k">import</span> <span class="n">ClientSession</span>
+
+<span class="kn">from</span> <span class="nn">asynctmdb.common</span> <span class="k">import</span> <span class="p">(</span><span class="n">DATE_FORMAT</span><span class="p">,</span>
+                              <span class="n">StatusCode</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">asynctmdb.config</span> <span class="k">import</span> <span class="n">API_BASE_URL</span>
+<span class="kn">from</span> <span class="nn">asynctmdb.methods</span> <span class="k">import</span> <span class="n">find</span>
+
+
+<div class="viewcode-block" id="movie"><a class="viewcode-back" href="../../../asynctmdb.imdb.find.html#asynctmdb.imdb.find.movie">[docs]</a><span class="k">async</span> <span class="k">def</span> <span class="nf">movie</span><span class="p">(</span><span class="n">imdb_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                <span class="o">*</span><span class="p">,</span>
+                <span class="n">api_base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">API_BASE_URL</span><span class="p">,</span>
+                <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                <span class="n">language</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">session</span><span class="p">:</span> <span class="n">ClientSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Search TMDb movie details by IMDb ID.</span>
+
+<span class="sd">    :raise: ``ValueError`` if IMDb ID is invalid or there is no details found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">language</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">language</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">find</span><span class="o">.</span><span class="n">by</span><span class="p">[</span><span class="s1">&#39;imdb_id&#39;</span><span class="p">](</span><span class="n">imdb_id</span><span class="p">,</span>
+                                        <span class="n">api_base_url</span><span class="o">=</span><span class="n">api_base_url</span><span class="p">,</span>
+                                        <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span>
+                                        <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span>
+                                        <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;movie_results&#39;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;status_code&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">status_code</span> <span class="o">!=</span> <span class="n">StatusCode</span><span class="o">.</span><span class="n">RESOURCE_NOT_FOUND</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">response</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s1">&#39;Invalid IMDb id: &quot;</span><span class="si">{imdb_id}</span><span class="s1">&quot;.&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">record</span><span class="p">,</span> <span class="o">=</span> <span class="n">records</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">records</span><span class="p">:</span>
+            <span class="n">err_msg</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="s1">&#39;Movie imdb id &quot;</span><span class="si">{imdb_id}</span><span class="s1">&quot; is ambiguous: &#39;</span>
+                       <span class="n">f</span><span class="s1">&#39;found {len(records)} records.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">err_msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;No record found for movie with &#39;</span>
+                       <span class="n">f</span><span class="s1">&#39;IMDb id &quot;</span><span class="si">{imdb_id}</span><span class="s1">&quot;.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">normalize_movie</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">record</span></div>
+
+
+<span class="k">def</span> <span class="nf">normalize_movie</span><span class="p">(</span><span class="n">record</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+                    <span class="o">*</span><span class="p">,</span>
+                    <span class="n">format_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DATE_FORMAT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="n">record</span><span class="p">[</span><span class="s1">&#39;release_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;release_date&#39;</span><span class="p">],</span>
+                                                    <span class="n">format_string</span><span class="p">)</span>
+                                  <span class="o">.</span><span class="n">date</span><span class="p">())</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Azat Ibrakov.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
