@@ -25,20 +25,20 @@ async def test_movie_details(movie_id: int,
                              invalid_api_key: str,
                              session: ClientSession) -> None:
     record = await movies.details(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
     invalid_api_key_response = await movies.details(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.details(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     record_imdb_id = record['imdb_id']
@@ -63,11 +63,11 @@ async def test_movie_account_states(movie_id: int,
                                     invalid_session_id: str,
                                     session: ClientSession) -> None:
     invalid_session_response = await movies.account_states(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session_id=invalid_session_id,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session_id=invalid_session_id,
+            session=session)
 
     invalid_session_status_code = invalid_session_response['status_code']
 
@@ -83,20 +83,20 @@ async def test_movie_alternative_titles(movie_id: int,
                                         invalid_api_key: str,
                                         session: ClientSession) -> None:
     record = await movies.alternative_titles(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
     invalid_api_key_response = await movies.alternative_titles(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.alternative_titles(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     record_titles = map(operator.itemgetter('title'), record['titles'])
@@ -127,45 +127,45 @@ async def test_movie_changes(movie_id: int,
                              tmdb_foundation_date: date,
                              session: ClientSession) -> None:
     empty_interval_record = await movies.changes(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        start_date=datetime.max,
-        end_date=datetime.min,
-        page=page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            start_date=datetime.max,
+            end_date=datetime.min,
+            page=page_number,
+            session=session)
     nonexistent_movie_record = await movies.changes(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        start_date=movie_changes_start_date,
-        end_date=movie_changes_end_date,
-        page=page_number,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            start_date=movie_changes_start_date,
+            end_date=movie_changes_end_date,
+            page=page_number,
+            session=session)
     record = await movies.changes(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        start_date=movie_changes_start_date,
-        end_date=movie_changes_end_date,
-        page=page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            start_date=movie_changes_start_date,
+            end_date=movie_changes_end_date,
+            page=page_number,
+            session=session)
     invalid_api_key_response = await movies.changes(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        start_date=movie_changes_start_date,
-        end_date=movie_changes_end_date,
-        page=page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            start_date=movie_changes_start_date,
+            end_date=movie_changes_end_date,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.changes(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        start_date=movie_changes_start_date,
-        end_date=movie_changes_end_date,
-        page=invalid_page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            start_date=movie_changes_start_date,
+            end_date=movie_changes_end_date,
+            page=invalid_page_number,
+            session=session)
 
     empty_interval_results = empty_interval_record['changes']
     nonexistent_movie_results = nonexistent_movie_record['changes']
@@ -206,15 +206,15 @@ async def test_movie_credits(movie_id: int,
                                   api_key=api_key,
                                   session=session)
     invalid_api_key_response = await movies.credits(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.credits(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     staff_records = record['cast'] + record['crew']
@@ -245,20 +245,20 @@ async def test_movie_images(movie_id: int,
                             invalid_api_key: str,
                             session: ClientSession) -> None:
     record = await movies.images(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
     invalid_api_key_response = await movies.images(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.images(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     results = record['backdrops']
@@ -298,15 +298,15 @@ async def test_movie_keywords(movie_id: int,
                                    api_key=api_key,
                                    session=session)
     invalid_api_key_response = await movies.keywords(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.keywords(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     results = record['keywords']
@@ -335,7 +335,6 @@ async def test_movie_release_dates(movie_id: int,
                                    nonexistent_movie_id: int,
                                    min_movie_id: int,
                                    min_movie_release_date: date,
-                                   current_date_time: datetime,
                                    api_base_url: str,
                                    api_key: str,
                                    invalid_api_key: str,
@@ -345,20 +344,20 @@ async def test_movie_release_dates(movie_id: int,
                                         api_key=api_key,
                                         session=session)
     invalid_api_key_response = await movies.release_dates(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.release_dates(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     results = record['results']
     release_dates_records = chain.from_iterable(
-        map(movies.release_dates_record, results))
+            map(movies.release_dates_record, results))
     release_dates = map(operator.itemgetter('release_date'),
                         release_dates_records)
     invalid_api_key_status_code = invalid_api_key_response['status_code']
@@ -371,8 +370,7 @@ async def test_movie_release_dates(movie_id: int,
     assert record_id >= min_movie_id
     assert record_id == movie_id
     assert are_valid_results(results)
-    assert all(min_movie_release_date <= release_date.date() and
-               release_date < current_date_time
+    assert all(min_movie_release_date <= release_date.date()
                for release_date in release_dates)
     assert invalid_api_key_status_code == StatusCode.INVALID_API_KEY
     assert nonexistent_movie_status_code == StatusCode.RESOURCE_NOT_FOUND
@@ -392,15 +390,15 @@ async def test_movie_videos(movie_id: int,
                                  api_key=api_key,
                                  session=session)
     invalid_api_key_response = await movies.videos(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.videos(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     results = record['results']
@@ -436,15 +434,15 @@ async def test_movie_translations(movie_id: int,
                                        api_key=api_key,
                                        session=session)
     invalid_api_key_response = await movies.translations(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     nonexistent_movie_response = await movies.translations(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     record_id = record['id']
     results = record['translations']
@@ -483,23 +481,23 @@ async def test_movie_recommendations(movie_id: int,
                                           page=page_number,
                                           session=session)
     invalid_api_key_response = await movies.recommendations(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     nonexistent_movie_response = await movies.recommendations(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.recommendations(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     results = record['results']
     release_dates = map(operator.itemgetter('release_date'), results)
@@ -538,23 +536,23 @@ async def test_similar_movies(movie_id: int,
                                   page=page_number,
                                   session=session)
     invalid_api_key_response = await movies.similar(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     nonexistent_movie_response = await movies.similar(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.similar(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     results = record['results']
     release_dates = map(operator.itemgetter('release_date'), results)
@@ -593,23 +591,23 @@ async def test_movie_reviews(movie_id: int,
                                   page=page_number,
                                   session=session)
     invalid_api_key_response = await movies.reviews(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     nonexistent_movie_response = await movies.reviews(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.reviews(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     record_id = record['id']
     results = record['results']
@@ -651,23 +649,23 @@ async def test_movie_lists(movie_id: int,
                                 page=page_number,
                                 session=session)
     invalid_api_key_response = await movies.lists(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     nonexistent_movie_response = await movies.lists(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.lists(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     record_id = record['id']
     results = record['results']
@@ -700,33 +698,33 @@ async def test_rate_movie(movie_id: int,
                           invalid_api_key: str,
                           session: ClientSession) -> None:
     valid_response = await movies.rate(
-        movie_id,
-        rating=movie_rating,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        guest_session_id=guest_session_id,
-        session=session)
+            movie_id,
+            rating=movie_rating,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            guest_session_id=guest_session_id,
+            session=session)
     invalid_api_key_response = await movies.rate(
-        movie_id,
-        rating=movie_rating,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        guest_session_id=guest_session_id,
-        session=session)
+            movie_id,
+            rating=movie_rating,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            guest_session_id=guest_session_id,
+            session=session)
     invalid_session_response = await movies.rate(
-        movie_id,
-        rating=movie_rating,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session_id=invalid_session_id,
-        session=session)
+            movie_id,
+            rating=movie_rating,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session_id=invalid_session_id,
+            session=session)
     nonexistent_movie_response = await movies.rate(
-        nonexistent_movie_id,
-        rating=movie_rating,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        guest_session_id=guest_session_id,
-        session=session)
+            nonexistent_movie_id,
+            rating=movie_rating,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            guest_session_id=guest_session_id,
+            session=session)
 
     valid_status_code = valid_response['status_code']
     invalid_session_status_code = invalid_session_response['status_code']
@@ -752,29 +750,29 @@ async def test_delete_rating(movie_id: int,
                              invalid_api_key: str,
                              session: ClientSession) -> None:
     valid_response = await movies.delete_rating(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        guest_session_id=guest_session_id,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            guest_session_id=guest_session_id,
+            session=session)
     invalid_api_key_response = await movies.delete_rating(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        guest_session_id=guest_session_id,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            guest_session_id=guest_session_id,
+            session=session)
     invalid_session_response = await movies.delete_rating(
-        movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session_id=invalid_session_id,
-        session=session)
+            movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session_id=invalid_session_id,
+            session=session)
     nonexistent_movie_response = await movies.delete_rating(
-        nonexistent_movie_id,
-        api_base_url=api_base_url,
-        api_key=api_key,
-        guest_session_id=guest_session_id,
-        session=session)
+            nonexistent_movie_id,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            guest_session_id=guest_session_id,
+            session=session)
 
     valid_status_code = valid_response['status_code']
     invalid_session_status_code = invalid_session_response['status_code']
@@ -797,13 +795,13 @@ async def test_latest_movie(min_movie_id: int,
                             invalid_api_key: str,
                             session: ClientSession) -> None:
     record = await movies.latest(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
     invalid_api_key_response = await movies.latest(
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
 
     record_id = record['id']
     invalid_api_key_status_code = invalid_api_key_response['status_code']
@@ -823,20 +821,20 @@ async def test_now_playing_movies(page_number: int,
                                   invalid_api_key: str,
                                   session: ClientSession) -> None:
     record = await movies.now_playing(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_api_key_response = await movies.now_playing(
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.now_playing(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     dates = record['dates']
     results = record['results']
@@ -864,20 +862,20 @@ async def test_popular_movies(page_number: int,
                               invalid_api_key: str,
                               session: ClientSession) -> None:
     record = await movies.popular(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_api_key_response = await movies.popular(
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.popular(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     results = record['results']
     invalid_api_key_status_code = invalid_api_key_response['status_code']
@@ -901,20 +899,20 @@ async def test_top_rated_movies(page_number: int,
                                 invalid_api_key: str,
                                 session: ClientSession) -> None:
     record = await movies.top_rated(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_api_key_response = await movies.top_rated(
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.top_rated(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     results = record['results']
     invalid_api_key_status_code = invalid_api_key_response['status_code']
@@ -938,20 +936,20 @@ async def test_upcoming_movies(page_number: int,
                                invalid_api_key: str,
                                session: ClientSession) -> None:
     record = await movies.upcoming(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=page_number,
+            session=session)
     invalid_api_key_response = await movies.upcoming(
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        page=page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            page=page_number,
+            session=session)
     invalid_page_response = await movies.upcoming(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        page=invalid_page_number,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            page=invalid_page_number,
+            session=session)
 
     results = record['results']
     invalid_api_key_status_code = invalid_api_key_response['status_code']

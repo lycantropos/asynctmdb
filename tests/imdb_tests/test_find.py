@@ -23,10 +23,10 @@ async def test_find_by_imdb_id(imdb_id: str,
                                    api_key=api_key,
                                    session=session)
     invalid_api_key_response = await imdb.find.movie(
-        imdb_id,
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            imdb_id,
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
 
     record_id = record['id']
     invalid_api_key_status_code = invalid_api_key_response['status_code']

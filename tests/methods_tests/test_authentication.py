@@ -15,13 +15,13 @@ async def test_create_request_token(api_base_url: str,
                                     invalid_api_key: str,
                                     session: ClientSession) -> None:
     invalid_api_key_response = await create_request_token(
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     valid_response = await create_request_token(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     invalid_api_key_status_code = invalid_api_key_response['status_code']
     succeed = valid_response['success']
@@ -55,13 +55,13 @@ async def test_create_guest_session(api_base_url: str,
                                     invalid_api_key: str,
                                     session: ClientSession) -> None:
     invalid_api_key_response = await create_guest_session(
-        api_base_url=api_base_url,
-        api_key=invalid_api_key,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=invalid_api_key,
+            session=session)
     valid_response = await create_guest_session(
-        api_base_url=api_base_url,
-        api_key=api_key,
-        session=session)
+            api_base_url=api_base_url,
+            api_key=api_key,
+            session=session)
 
     invalid_api_key_status_code = invalid_api_key_response['status_code']
     succeed = valid_response['success']
