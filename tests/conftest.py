@@ -54,7 +54,8 @@ def pytest_generate_tests(metafunc: Metafunc) -> None:
 def preparation(api_base_url: str,
                 api_key: str) -> None:
     event_loop = get_event_loop()
-    with ClientSession(loop=event_loop) as session:
+    session = ClientSession(loop=event_loop)
+    with closing(session):
         future = ensure_future(requests.get(method_url=api_base_url,
                                             session=session,
                                             api_key=api_key))
