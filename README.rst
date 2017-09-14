@@ -227,7 +227,7 @@ Plain
 
 .. code-block:: bash
 
-  ./set-api-key.sh ./set-login.sh python3.6 setup.py test
+  ./set-api-key.sh ./set-login.sh python3.5 setup.py test
 
 Inside ``Docker`` container
 
