@@ -33,12 +33,10 @@ nonexistent_movies_ids = (strategies.integers(max_value=MIN_MOVIE_ID - 1)
                           # that there will be less
                           # than 1_000 new records in TMDb
                           # while tests session is running
-                          | strategies.integers(
-        min_value=MAX_MOVIE_ID + 1000))
+                          | strategies.integers(min_value=MAX_MOVIE_ID + 1000))
 movies_changes_date_times = strategies.datetimes(
-        min_datetime=datetime.combine(TMDB_FOUNDATION_DATE,
-                                      time()),
-        max_datetime=datetime.utcnow())
+        min_value=datetime.combine(TMDB_FOUNDATION_DATE, time()),
+        max_value=datetime.utcnow())
 movies_ratings = strategies.sampled_from(list(ratings()))
 pages_numbers = strategies.integers(min_value=MIN_PAGE_NUMBER,
                                     max_value=MAX_PAGE_NUMBER)
