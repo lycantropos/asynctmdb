@@ -3,4 +3,5 @@
 
 .. automodule:: asynctmdb.methods.movies
     :members:
+    :member-order: bysource
     :show-inheritance:

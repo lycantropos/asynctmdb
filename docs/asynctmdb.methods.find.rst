@@ -3,4 +3,5 @@
 
 .. automodule:: asynctmdb.methods.find
     :members:
+    :member-order: bysource
     :show-inheritance:

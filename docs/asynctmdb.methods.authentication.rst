@@ -3,4 +3,5 @@
 
 .. automodule:: asynctmdb.methods.authentication
     :members:
+    :member-order: bysource
     :show-inheritance:

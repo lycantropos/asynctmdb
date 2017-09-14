@@ -37,8 +37,6 @@ extensions = ['sphinx.ext.viewcode',
               'sphinx.ext.autodoc',
               'sphinx.ext.extlinks']
 
-autodoc_member_order = 'bysource'
-
 api_docs_base_url = 'https://developers.themoviedb.org/3'
 extlinks_keys = ['getting-started',
                  'authentication',
