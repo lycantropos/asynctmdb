@@ -3,16 +3,33 @@ from setuptools import (setup,
 
 import asynctmdb
 from asynctmdb.config import PROJECT_NAME
+from asynctmdb.utils import urljoin
 
-project_base_url = 'https://github.com/lycantropos/asynctmdb/'
+project_base_url = 'https://github.com/lycantropos/asynctmdb'
 setup(name=PROJECT_NAME,
-      packages=find_packages(exclude=('tests',)),
       version=asynctmdb.__version__,
-      description=asynctmdb.__doc__,
       author='Azat Ibrakov',
       author_email='azatibrakov@gmail.com',
       url=project_base_url,
-      download_url=project_base_url + 'archive/master.tar.gz',
+      download_url=urljoin(project_base_url, 'archive/master.tar.gz'),
+      description=asynctmdb.__doc__,
+      long_description=open('README.rst').read(),
+      license='MIT',
+      classifiers=[
+          'Development Status :: 3 - Alpha',
+          'Environment :: Web Environment',
+          'Framework :: AsyncIO',
+          'Intended Audience :: Developers',
+          'License :: OSI Approved :: MIT License',
+          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: Implementation :: CPython',
+          'Operating System :: POSIX',
+          'Operating System :: MacOS :: MacOS X',
+          'Operating System :: Microsoft :: Windows',
+          'Topic :: Internet :: WWW/HTTP',
+      ],
+      packages=find_packages(exclude=('tests',)),
       install_requires=[
           'aiohttp>=2.2.5',  # asynchronous HTTP
       ],
