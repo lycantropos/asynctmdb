@@ -92,7 +92,6 @@ KEYWORDS
 
 LISTS
 ~~~~~
-- `v4 or v3 lists? <https://developers.themoviedb.org/3/lists/v4-or-v3-lists?>`__
 - `Get Details <https://developers.themoviedb.org/3/lists/get-details>`__
 - `Check Item Status <https://developers.themoviedb.org/3/lists/check-item-status>`__
 - `Create List <https://developers.themoviedb.org/3/lists/create-list>`__
