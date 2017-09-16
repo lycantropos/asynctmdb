@@ -1,3 +1,3 @@
-"""Asynchronous working with TMDB API."""
+"""Asynchronous working with TMDb API."""
 
-__version__ = '0.0.2'
+__version__ = '0.0.3-dev'
