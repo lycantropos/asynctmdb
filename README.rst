@@ -1,5 +1,34 @@
 .. contents::
 
+
+In what follows ``python3`` is an alias for ``python3.5``
+or any later version (``python3.6`` and so on).
+
+Installation
+------------
+Install the latest ``pip`` & ``setuptools`` packages versions
+
+.. code-block:: bash
+
+  python3 -m pip install --upgrade pip setuptools
+
+Release
+~~~~~~~
+Download and install the latest stable [#]_ version with ``pip``
+
+.. code-block:: bash
+
+  python3 -m pip install --upgrade asynctmdb
+
+Developer
+~~~~~~~~~
+.. code-block:: bash
+
+  git clone https://github.com/lycantropos/asynctmdb.git
+  cd asynctmdb
+  python3 setup.py install
+
+
 Methods
 -------
 
@@ -204,6 +233,7 @@ TV EPISODES
 - `Delete Rating <https://developers.themoviedb.org/3/tv-episodes/delete-rating>`__
 - `Get Videos <https://developers.themoviedb.org/3/tv-episodes/get-videos>`__
 
+
 Running tests
 -------------
 
@@ -226,10 +256,13 @@ Plain
 
 .. code-block:: bash
 
-  ./set-api-key.sh ./set-login.sh python3.5 setup.py test
+  ./set-api-key.sh ./set-login.sh python3 setup.py test
 
 Inside ``Docker`` container
 
 .. code-block:: bash
 
   ./set-env.sh docker-compose up
+
+
+.. [#] At least we hope so.
